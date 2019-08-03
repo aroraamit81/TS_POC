@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="modal-content col-sm-4">
+    <div class="modal-header">
+
+      <h4 class="modal-title"><b>Add New Mapping</b></h4>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="mappingForm">
+        <div class="form-group">
+          <select id="project" name="projects" class="form-control" formControlName="projects">
+            <option value="0">
+              Select Project
+            </option>
+
+            <option *ngFor="let project of projectsData" [value]="project.projectId">
+              {{ project.projectName }}
+            </option>
+          </select>
+
+        </div>
+
+
+
+        <div class="form-group" *ngIf="selectedProject">
+          <select id="contacts" name="contacts" class="form-control" formControlName="contacts" multiple>
+            <option *ngFor="let contact of contactsUnmapped" [value]="contact.contactId">
+              {{ contact.contactName }}
+            </option>
+          </select>
+        </div>
+
+
+
+
+      </form>
+
+
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" type="submit" (click)="OnSubmit()"
+              [disabled]="DisableSubmit">
+        Submit
+      </button>
+
+    </div>
+  </div>
+
+
+  <div class="modal-content col-sm-6" style="margin-left:2%;" *ngIf="Project.value>0">
+    <div class="modal-header">
+
+      <div class="modal-title" *ngIf="nMappedContacts>0; else NoMappingYet">
+
+
+        <b>List of Contacts mapped with {{ selectedProject.projectName }}</b>
+      </div>
+      <ng-template #NoMappingYet>
+
+        <b>{{NoContactsForTheProjectYet}}</b>
+      </ng-template>
+    </div>
+    <div style="height:250px;overflow-y:auto;">
+      <table cellpadding="1" cellspacing="1" *ngIf="nMappedContacts"
+             class="table table-striped table-bordered table-sm">
+        <thead>
+          <tr>
+            <th class="th-sm">Name</th>
+            <th class="th-sm">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="overflow:scroll" *ngFor="let contact of (contactsMapped  || [])">
+            <td>{{contact.contactName}}</td>
+            <td>{{contact.email}}</td>
+
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+

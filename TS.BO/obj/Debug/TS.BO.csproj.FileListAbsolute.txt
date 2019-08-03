@@ -1,0 +1,6 @@
+E:\docs\git Repo\TS\TS.BO\bin\Debug\TS.BO.dll
+E:\docs\git Repo\TS\TS.BO\bin\Debug\TS.BO.pdb
+E:\docs\git Repo\TS\TS.BO\obj\Debug\TS.BO.csproj.CoreCompileInputs.cache
+E:\docs\git Repo\TS\TS.BO\obj\Debug\TS.BO.dll
+E:\docs\git Repo\TS\TS.BO\obj\Debug\TS.BO.pdb
+E:\docs\git Repo\TS\TS.BO\obj\Debug\TS.BO.csprojAssemblyReference.cache

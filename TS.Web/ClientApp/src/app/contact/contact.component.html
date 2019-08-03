@@ -1,0 +1,77 @@
+<div class="alert alert-danger col-sm-10" *ngIf="message">
+
+  {{message}}
+</div>
+<div class="row">
+  <div class="modal-content col-sm-4">
+    <div class="modal-header">
+
+      <h4 class="modal-title"><b>Add New Contact</b></h4>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="contactForm">
+        <div class="form-group">
+          <input type="text" class="form-control" id="Name" placeholder="Contact Name" formControlName="Name">
+
+        </div>
+        <div class="alert alert-danger" *ngIf="IsNameBlank">
+          Contact Name is required
+        </div>
+
+
+        <div class="form-group">
+          <input type="text" class="form-control" id="Email"
+                 placeholder="Contact's email address" formControlName="Email">
+        </div>
+        <div class="alert alert-danger" *ngIf="IsEmailBlank">
+          Contact's email is required
+        </div>
+        <div class="alert alert-danger" *ngIf="IsEmailInvalid">
+          Invalid Email address
+        </div>
+
+
+
+      </form>
+     
+
+    </div>
+    <div class="modal-footer">
+      <button type="Submit" class="btn btn-primary" (click)="OnSubmit()" [disabled]="contactForm.invalid">
+        <i class="fa fa-check"></i>
+        Submit
+      </button>
+
+    </div>
+  </div>
+
+  <div class="modal-content col-sm-6" style="margin-left:2%;" *ngIf="contactSize>0">
+    <div class="modal-header">
+
+      <h4 class="modal-title">
+
+
+        <b>List of Contacts</b>
+      </h4>
+    </div>
+
+    <div style="height:250px;overflow-y:auto;">
+      <table cellpadding="1" cellspacing="1" *ngIf="contacts" class="table table-striped table-bordered table-sm">
+        <thead>
+          <tr>
+            <th class="th-sm">Name</th>
+            <th class="th-sm">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let contact of (contacts  || [])">
+            <td>{{contact.contactName}}</td>
+            <td>{{contact.email}}</td>
+
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
